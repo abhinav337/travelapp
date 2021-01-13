@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel App</title>
+</head>
+<body>
+
+<h2>Travel App</h2>
+<form target="_blank" class="form">
+  <div class="inputs">
+  <div class="forminput">
+    City: <input type="text" id="inputcity" placeholder="Tokyo">
+  </div>
+  <div class="forminput">
+    Start Date: <input type="text" id="startdate" placeholder="YYYY/MM/DD">
+  </div>
+  <div class="forminput">
+    End Date: <input type="text" id="enddate" placeholder="YYYY/MM/DD">
+  </div>
+  </div>
+</form>
+<div class="display">
+  <button id="SUBMIT">Add Travel</button>
+  <button id="DELETE">Remove Travel</button>
+</div>
+<script>
+      // Check that service workers are supported
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+</script>
+</body>
+</html>
