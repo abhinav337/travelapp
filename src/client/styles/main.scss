@@ -40,7 +40,11 @@ input{
 	border-color: #727372;
 }
 
-.display button {
+.hidden {
+  display: none;
+}
+
+#SUBMIT, #print {
     display: block;
     margin: 0 auto;
     margin-top: 30px;
@@ -56,7 +60,7 @@ input{
     transition: background 0.3s ease-in;
 }
 
-.display button:hover {
+#SUBMIT:hover, #print:hover {
 	background-color: #727372;
 }
 
@@ -66,7 +70,6 @@ input{
     margin-top: 30px;
     text-align: center;
     width: 100%;
-    height: 150px;
     padding: 10px 30px;
     position: relative;
     left: calc(50% - 200px);

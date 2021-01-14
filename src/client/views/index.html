@@ -10,7 +10,7 @@
 <form target="_blank" class="form">
   <div class="inputs">
   <div class="forminput">
-    City: <input type="text" id="inputcity" placeholder="Tokyo">
+    City: <input type="text" id="tocity" placeholder="London">
   </div>
   <div class="forminput">
     Start Date: <input type="text" id="startdate" placeholder="YYYY/MM/DD">
@@ -19,10 +19,44 @@
     End Date: <input type="text" id="enddate" placeholder="YYYY/MM/DD">
   </div>
   </div>
+  <input type="submit" value="submit" id="SUBMIT"></input>
+  <button id="print">print</button>
 </form>
+<div class="hidden">
 <div class="display">
-  <button id="SUBMIT">Add Travel</button>
-  <button id="DELETE">Remove Travel</button>
+  <div class="backdrop">
+    <h2>Weather Info</h2>
+      <div class="results">
+        <div class="content">
+            <img id="cityimage" alt="city image">
+        </div>
+        <div class="content">
+            <div> Travel Log to :   </div>
+            <span id="travelcity"> </span>
+        </div>
+        <div class="content">
+            <div> Start Date is:   </div>
+            <span id="start"> </span>
+        </div>
+        <div class="content">
+            <div> End Date is:   </div>
+            <span id="end">  </span>
+        </div>
+        <div class="content">
+            <div> Trip starts in:   </div>
+            <span id="daystogo">  </span>
+        </div>
+        <div class="content">
+            <div> Weather:   </div>
+            Max Temp <span id="maxtemp">  </span> Min Temp <span id="mintemp">  </span>
+        </div>
+        <div class="content">
+            <div> Summary:   </div>
+            <span id="summary">  </span>
+        </div>
+      </div>
+  </div>
+</div>
 </div>
 <script>
       // Check that service workers are supported
