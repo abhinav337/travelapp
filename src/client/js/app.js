@@ -7,8 +7,9 @@ const print = document.querySelector("#print");
 
 
 //eventListeners
+if(form){
 form.addEventListener('submit', submitInputs);
-
+}
 
 print.addEventListener('click', function (e) {
     window.print();
