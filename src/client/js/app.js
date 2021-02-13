@@ -7,9 +7,11 @@ const print = document.querySelector("#print");
 
 
 //eventListeners
-if(form){
-form.addEventListener('submit', submitInputs);
-}
+//if(form){
+//form.addEventListener('submit', submitInputs);
+//}
+
+document.querySelector('.form').addEventListener('submit',submitInputs);
 
 print.addEventListener('click', function (e) {
     window.print();
