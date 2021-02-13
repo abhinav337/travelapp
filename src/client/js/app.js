@@ -68,6 +68,7 @@ export function submitInputs(e) {
     geoNames(toCity)
       .then((cityInfo) => {
         const country = cityInfo.geoNames[0].countryName;
+        console.log(country);
         const weatherInfo = weatherBit(toCity, daysLeft);
         return weatherInfo;
       })
@@ -102,5 +103,4 @@ export const modifyUI = async (completeInfo) => {
         console.log("error", error);
     }
 }
-
 

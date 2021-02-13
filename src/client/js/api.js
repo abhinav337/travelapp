@@ -4,6 +4,7 @@ export async function geoNames(city) {
 	try {
 		const response = await fetch(apiUrl);
 		const cityInfo = await response.json();
+		console.log(cityInfo);
 		return cityInfo;
 	} catch (error) {
 		console.log(error);
