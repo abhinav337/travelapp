@@ -59,6 +59,7 @@ export function submitInputs(e) {
     e.preventDefault();
 
     const toCity = document.querySelector("#tocity").value;
+    console.log(toCity);
     const startDate = document.querySelector("#startdate").value;
     const endDate = document.querySelector("#enddate").value;
     const daysLeft = daysTogo(startDate);
@@ -67,16 +68,21 @@ export function submitInputs(e) {
 
     geoNames(toCity)
       .then((cityInfo) => {
-        const country = cityInfo.geoNames[0].countryName;
+        const country = cityInfo.geonames[0].countryName;
         console.log(country);
         const weatherInfo = weatherBit(toCity, daysLeft);
         return weatherInfo;
       })
       .then((weatherInfo) => {
         const completeInfo = sendServer('http://localhost:8000/travel', {
-              toCity, startDate, endDate, maxTemp: weatherInfo.max_temp, minTemp: weatherInfo.min_temp, 
+              toCity, 
+              startDate, 
+              endDate, 
+              maxTemp: weatherInfo.max_temp, 
+              minTemp: weatherInfo.min_temp, 
               summary: daysLeft < 16 ? weatherInfo.weather.description : null
         });
+        console.log(completeInfo);
         return completeInfo;
       }).then((completeInfo) => {
           modifyUI(completeInfo);
@@ -85,7 +91,8 @@ export function submitInputs(e) {
 
 //change the UI
 export const modifyUI = async (completeInfo) => {
-    result.classList.remove("hidden");
+    document.querySelector('#result').classList.remove("hidden");
+    const toCity = document.querySelector("#tocity").value;
     const startDate = document.querySelector("#startdate").value;
     const daysLeft = daysTogo(startDate);
     try {
@@ -94,7 +101,7 @@ export const modifyUI = async (completeInfo) => {
         document.querySelector("#travelcity").innerHTML = completeInfo.city;
         document.querySelector("#start").innerHTML = completeInfo.from;
         document.querySelector("#end").innerHTML = completeInfo.to;
-        document.querySelector("#daystogo").innerHTML = daysLeft;
+        document.querySelector("#daystogo").innerHTML = daysLeft + " days";
         document.querySelector("#maxtemp").innerHTML = completeInfo.maxTemp;
         document.querySelector("#mintemp").innerHTML = completeInfo.minTemp;
         document.querySelector("#summary").innerHTML = completeInfo.summary;
