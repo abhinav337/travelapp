@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html id="bgwhole">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel App</title>
+<script src="https://use.fontawesome.com/ec0e561d4c.js"></script>
 </head>
 <body>
 
@@ -13,10 +14,10 @@
     City: <input type="text" id="tocity" placeholder="London">
   </div>
   <div class="forminput">
-    Start Date: <input type="text" id="startdate" placeholder="YYYY/MM/DD">
+    Start Date: <input type="date" id="startdate" placeholder="YYYY/MM/DD">
   </div>
   <div class="forminput">
-    End Date: <input type="text" id="enddate" placeholder="YYYY/MM/DD">
+    End Date: <input type="date" id="enddate" placeholder="YYYY/MM/DD">
   </div>
   </div>
   <input type="submit" value="submit" id="SUBMIT"></input>
@@ -27,33 +28,17 @@
   <div class="backdrop">
     <h2>Travel Info</h2>
       <div class="results">
-        <div class="content">
-            <img id="cityimage" alt="city image">
-        </div>
-        <div class="content">
-            <div> Travel Log to :   </div>
-            <span id="travelcity"> </span>
-        </div>
-        <div class="content">
-            <div> Start Date is:   </div>
-            <span id="start"> </span>
-        </div>
-        <div class="content">
-            <div> End Date is:   </div>
-            <span id="end">  </span>
-        </div>
-        <div class="content">
-            <div> Trip starts in:   </div>
-            <span id="daystogo">  </span>
-        </div>
-        <div class="content">
-            <div> Weather:   </div>
-            Max Temp <span id="maxtemp">  </span> Min Temp <span id="mintemp">  </span>
-        </div>
-        <div class="content">
-            <div> Summary:   </div>
-            <span id="summary">  </span>
-        </div>
+        <ul class="content">
+            <div>
+            <img id="cityimage" alt="city image" class="imageclass">
+            </div>
+            <i class="fa fa-plane" aria-hidden="true"></i><li>You are travelling to: <span id="travelcity" class="flowtext"></span></li>
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i><li>Start Date is: <span id="start" class="flowtext"></span></li>
+            <li>End Date is: <span id="end" class="flowtext"></span></li>
+            <i class="fa fa-clock-o" aria-hidden="true"></i><li>Your trip starts in: <span id="daystogo" class="flowtext"></span></li>
+            <i class="fa fa-cloud" aria-hidden="true"></i><li>Weather: Max Temp is <span id="maxtemp" class="flowtext"></span> Min Temp is <span id="mintemp" class="flowtext"></span></li>
+            <i class="fa fa-bookmark" aria-hidden="true"></i><li>Overall Weather: <span id="summary" class="flowtext"></span></li>
+        </ul>
       </div>
   </div>
 </div>

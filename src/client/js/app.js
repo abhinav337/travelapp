@@ -78,8 +78,8 @@ export function submitInputs(e) {
               toCity, 
               startDate, 
               endDate, 
-              maxTemp: weatherInfo.max_temp, 
-              minTemp: weatherInfo.min_temp, 
+              maxTemp: daysLeft <16 ? weatherInfo.max_temp : "N/A", 
+              minTemp: daysLeft< 16 ? weatherInfo.min_temp : "N/A", 
               summary: daysLeft < 16 ? weatherInfo.weather.description : null
         });
         console.log(completeInfo);
@@ -95,9 +95,13 @@ export const modifyUI = async (completeInfo) => {
     const toCity = document.querySelector("#tocity").value;
     const startDate = document.querySelector("#startdate").value;
     const daysLeft = daysTogo(startDate);
+    const cityUrl = `https://pixabay.com/api/?key=19873002-2745dade829779eccdc1a2cfe&q=${toCity}&image_type=photo&pretty=true&category=places`;
+    const res = await fetch(cityUrl);
     try {
-        const image = pixaBay(toCity);
-        document.querySelector("#cityimage").setAttribute('src', image);
+        const image = await res.json();
+        const imageURL = image.hits[0].webformatURL;
+        console.log(image);
+        document.querySelector("#cityimage").setAttribute('src', imageURL);
         document.querySelector("#travelcity").innerHTML = completeInfo.city;
         document.querySelector("#start").innerHTML = completeInfo.from;
         document.querySelector("#end").innerHTML = completeInfo.to;
@@ -109,5 +113,6 @@ export const modifyUI = async (completeInfo) => {
     catch (error) {
         console.log("error", error);
     }
+        document.querySelector('#bgwhole').classList.add("htmlRedefined");
 }
 
