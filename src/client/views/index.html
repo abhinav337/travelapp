@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html id="bgwhole">
+<html id="bgwhole" lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel App</title>
-<script src="https://use.fontawesome.com/ec0e561d4c.js"></script>
 </head>
 <body>
 
@@ -14,13 +13,13 @@
     City: <input type="text" id="tocity" placeholder="London">
   </div>
   <div class="forminput">
-    Start Date: <input type="date" id="startdate" placeholder="YYYY/MM/DD">
+    Start Date: <input type="date" id="startdate">
   </div>
   <div class="forminput">
-    End Date: <input type="date" id="enddate" placeholder="YYYY/MM/DD">
+    End Date: <input type="date" id="enddate">
   </div>
   </div>
-  <input type="submit" value="submit" id="SUBMIT"></input>
+  <input type="submit" value="submit" id="SUBMIT">
   <button id="print">print</button>
 </form>
 <section id="result" class="hidden">
@@ -28,16 +27,16 @@
   <div class="backdrop">
     <h2>Travel Info</h2>
       <div class="results">
-        <ul class="content">
             <div>
             <img id="cityimage" alt="city image" class="imageclass">
             </div>
-            <i class="fa fa-plane" aria-hidden="true"></i><li>You are travelling to: <span id="travelcity" class="flowtext"></span></li>
-            <i class="fa fa-calendar-check-o" aria-hidden="true"></i><li>Start Date is: <span id="start" class="flowtext"></span></li>
+        <ul class="content">
+            <li>You are travelling to: <span id="travelcity" class="flowtext"></span></li>
+            <li>Start Date is: <span id="start" class="flowtext"></span></li>
             <li>End Date is: <span id="end" class="flowtext"></span></li>
-            <i class="fa fa-clock-o" aria-hidden="true"></i><li>Your trip starts in: <span id="daystogo" class="flowtext"></span></li>
-            <i class="fa fa-cloud" aria-hidden="true"></i><li>Weather: Max Temp is <span id="maxtemp" class="flowtext"></span> Min Temp is <span id="mintemp" class="flowtext"></span></li>
-            <i class="fa fa-bookmark" aria-hidden="true"></i><li>Overall Weather: <span id="summary" class="flowtext"></span></li>
+            <li>Your trip starts in: <span id="daystogo" class="flowtext"></span></li>
+            <li>Weather: Max Temp is <span id="maxtemp" class="flowtext"></span> Min Temp is <span id="mintemp" class="flowtext"></span></li>
+            <li>Overall Weather: <span id="summary" class="flowtext"></span></li>
         </ul>
       </div>
   </div>
