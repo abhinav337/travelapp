@@ -4,12 +4,9 @@ import { geoNames, pixaBay, weatherBit } from "./api";
 //variables
 const form = document.querySelector("#form");
 const print = document.querySelector("#print");
+let pixaBayJson = "";
+let daysLeft = "";
 
-
-//eventListeners
-//if(form){
-//form.addEventListener('submit', submitInputs);
-//}
 
 document.querySelector('.form').addEventListener('submit',submitInputs);
 
@@ -20,11 +17,21 @@ print.addEventListener('click', function (e) {
 
 
 //calc days to trip
-export function daysTogo(startDate) {
-    const currDate = Date.now();
-    const startDateTime = (new Date(startDate).getTime());
-    const diff = (startDateTime - currDate) / (60 * 60 * 24 * 1000);
-    return Math.ceil(diff);
+export async function daysTogo(startDate) {
+    const toCity = document.querySelector("#tocity").value;
+    const cityUrl = `https://pixabay.com/api/?key=19873002-2745dade829779eccdc1a2cfe&q=${toCity}&image_type=photo&pretty=true&category=places`;
+    const res = await fetch(cityUrl);
+    try {
+        pixaBayJson = await res.json();
+        const currDate = Date.now();
+        const startDateTime = (new Date(startDate).getTime());
+        const diff = (startDateTime - currDate) / (60 * 60 * 24 * 1000);
+        daysLeft = Math.ceil(diff);
+        return Math.ceil(diff);
+    }
+    catch (error) {
+        console.log("error", error);
+    }
 }
 
 //post function
@@ -59,12 +66,10 @@ export function submitInputs(e) {
     e.preventDefault();
 
     const toCity = document.querySelector("#tocity").value;
-    console.log(toCity);
     const startDate = document.querySelector("#startdate").value;
     const endDate = document.querySelector("#enddate").value;
-    const daysLeft = daysTogo(startDate);
+    const daysToTrip = daysTogo(startDate);
     console.log(daysLeft);
-
 
     geoNames(toCity)
       .then((cityInfo) => {
@@ -94,13 +99,11 @@ export const modifyUI = async (completeInfo) => {
     document.querySelector('#result').classList.remove("hidden");
     const toCity = document.querySelector("#tocity").value;
     const startDate = document.querySelector("#startdate").value;
-    const daysLeft = daysTogo(startDate);
-    const cityUrl = `https://pixabay.com/api/?key=19873002-2745dade829779eccdc1a2cfe&q=${toCity}&image_type=photo&pretty=true&category=places`;
-    const res = await fetch(cityUrl);
+    //const cityUrl = `https://pixabay.com/api/?key=19873002-2745dade829779eccdc1a2cfe&q=${toCity}&image_type=photo&pretty=true&category=places`;
+    //const res = await fetch(cityUrl);
     try {
-        const image = await res.json();
-        const imageURL = image.hits[0].webformatURL;
-        console.log(image);
+        //const image = await res.json();
+        const imageURL = pixaBayJson.hits[0].webformatURL;
         document.querySelector("#cityimage").setAttribute('src', imageURL);
         document.querySelector("#travelcity").innerHTML = completeInfo.city;
         document.querySelector("#start").innerHTML = completeInfo.from;

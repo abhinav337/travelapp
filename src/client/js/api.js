@@ -25,9 +25,9 @@ export async function weatherBit(city, diffDays) {
 export async function pixaBay(city) {
 	const cityUrl = `https://pixabay.com/api/?key=19873002-2745dade829779eccdc1a2cfe&q=${city}&image_type=photo&pretty=true&category=places`;
 	try {
-		let res = await fetch(cityUrl);
-		let cityData = await res.json();
-		return cityData.hits[0].webformatURL;
+		const res = await fetch(cityUrl);
+		const cityData = await res.json();
+		return cityData;
 	} catch (error) {
 		console.log(error);
 	}
